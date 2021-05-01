@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './BookList.css'
+import { Button } from 'reactstrap'
 import Book from './Book'
 import { BookContext } from '../contexts/BookContext'
 import { ThemeContext } from '../contexts/ThemeContext'
@@ -14,7 +15,7 @@ export default class BookList extends Component {
                     <BookContext.Consumer>
                         {contextBook => {
                             const { books } = contextBook
-                            const { isDartTheme, dark, light } = contextTheme
+                            const { changeTheme, isDartTheme, dark, light } = contextTheme
                             const theme = isDartTheme ? dark : light
                             return (
                                 <section
@@ -22,8 +23,16 @@ export default class BookList extends Component {
                                     style={{ background: theme.bg, color: theme.txt }} id="portfolio">
                                     <div className="container">
                                         <div className="text-center">
-                                            <h2 className="section-heading">BOOKFOLIO</h2>
-                                            <h3 className="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                                            <h2 className="section-heading">
+                                                BOOKFOLIO
+                                            </h2>
+                                            <h3 className="section-subheading text-muted">
+                                                Lorem ipsum dolor sit amet consectetur.
+                                            </h3>
+                                            <Button color="info" outline
+                                                onClick={changeTheme}
+                                                className='mb-5 mt-2'>Change Theme
+                                            </Button>
                                         </div>
                                         <div className="row">
                                             {books.map((book, i) => {

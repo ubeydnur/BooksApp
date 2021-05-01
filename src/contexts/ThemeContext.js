@@ -16,9 +16,20 @@ class ThemeContextProvider extends React.Component {
             hover: 'rgba(254, 209, 54, 0.8'
         }
     }
+
+    changeTheme = () => {
+        this.setState({
+            isDartTheme: !this.state.isDartTheme
+        })
+    }
+
     render() {
         return (
-            <ThemeContext.Provider value={{ ...this.state }}>
+            <ThemeContext.Provider
+                value={{
+                    ...this.state,
+                    changeTheme: this.changeTheme
+                }}>
                 {this.props.children}
             </ThemeContext.Provider>
         )
